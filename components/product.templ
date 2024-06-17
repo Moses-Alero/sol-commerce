@@ -1,0 +1,29 @@
+package components
+
+import "sol-commerce/db"
+import "strconv"
+
+templ Products(products []db.Product) {
+     <section class="products">
+            for _, product := range products{
+                <div class="product">
+                    <div class="product-img-container">
+                       <img src={product.Image} alt={product.Title}> 
+                    </div>
+                    <div class="product-info">
+                        <div class="quick-view">
+                            <p>Quick View</p>
+                        </div>
+                        <div class="info">
+                            <p>{product.Category}</p>
+                            <h4>{product.Title}</h4>
+                            <span>⭐️⭐️⭐️⭐️⭐️</span>
+                            <p>${strconv.FormatFloat(product.Price, 'f', -1, 64)}</p>
+                        </div>
+                    </div>
+                </div>
+            }
+    </section>
+}
+
+// https://websitedemos.net/custom-printing-04/shop/?customize=template

@@ -1,0 +1,143 @@
+[
+    {
+      "id": 1,
+      "name": "Wireless Bluetooth Headphones",
+      "description": "High-quality wireless headphones with noise cancellation and long battery life.",
+      "price": 99.99,
+      "category": "Electronics",
+      "stock": 150,
+      "images": [
+        "/assets/img/th-298986468.jpg",
+        "/assets/img/th-298986468.jpg"
+      ],
+      "brand": "SoundMax",
+      "rating": 4.5
+    },
+    {
+      "id": 2,
+      "name": "Smartphone 12 Pro",
+      "description": "Latest model smartphone with powerful processor and advanced camera system.",
+      "price": 899.99,
+      "category": "Electronics",
+      "stock": 85,
+      "images": [
+        "/assets/img/th-298986468.jpg",
+        "/assets/img/th-298986468.jpg"
+      ],
+      "brand": "TechCorp",
+      "rating": 4.8
+    },
+    {
+      "id": 3,
+      "name": "Stainless Steel Water Bottle",
+      "description": "Durable and eco-friendly stainless steel water bottle, 750ml.",
+      "price": 19.99,
+      "category": "Home & Kitchen",
+      "stock": 200,
+      "images": [
+        "/assets/img/th-298986468.jpg",
+        "/assets/img/th-298986468.jpg"
+      ],
+      "brand": "EcoHydrate",
+      "rating": 4.2
+    },
+    {
+      "id": 4,
+      "name": "Running Shoes",
+      "description": "Comfortable and lightweight running shoes with superior grip and support.",
+      "price": 59.99,
+      "category": "Sports & Outdoors",
+      "stock": 120,
+      "images": [
+        "/assets/img/th-298986468.jpg",
+        "/assets/img/th-298986468.jpg"
+      ],
+      "brand": "SportFit",
+      "rating": 4.4
+    },
+    {
+      "id": 5,
+      "name": "4K Ultra HD Smart TV",
+      "description": "55-inch 4K Ultra HD Smart TV with HDR and built-in streaming apps.",
+      "price": 499.99,
+      "category": "Electronics",
+      "stock": 45,
+      "images": [
+        "/assets/img/th-298986468.jpg",
+        "/assets/img/th-298986468.jpg"
+      ],
+      "brand": "VisionTech",
+      "rating": 4.6
+    },
+    {
+      "id": 6,
+      "name": "Espresso Coffee Maker",
+      "description": "Automatic espresso machine with built-in grinder and milk frother.",
+      "price": 249.99,
+      "category": "Home & Kitchen",
+      "stock": 60,
+      "images": [
+        "/assets/img/th-298986468.jpg",
+        "/assets/img/th-298986468.jpg"
+      ],
+      "brand": "BrewMaster",
+      "rating": 4.7
+    },
+    {
+      "id": 7,
+      "name": "Gaming Laptop",
+      "description": "High-performance gaming laptop with powerful GPU and fast refresh rate display.",
+      "price": 1299.99,
+      "category": "Computers",
+      "stock": 30,
+      "images": [
+        "/assets/img/th-298986468.jpg",
+        "/assets/img/th-298986468.jpg"
+      ],
+      "brand": "GamePro",
+      "rating": 4.9
+    },
+    {
+      "id": 8,
+      "name": "Electric Toothbrush",
+      "description": "Rechargeable electric toothbrush with multiple brushing modes and timer.",
+      "price": 49.99,
+      "category": "Personal Care",
+      "stock": 180,
+      "images": [
+        "/assets/img/th-298986468.jpg",
+        "/assets/img/th-298986468.jpg"
+      ],
+      "brand": "CleanSmile",
+      "rating": 4.3
+    },
+    {
+      "id": 9,
+      "name": "Yoga Mat",
+      "description": "Non-slip yoga mat with excellent cushioning and durability, ideal for all types of yoga.",
+      "price": 29.99,
+      "category": "Sports & Outdoors",
+      "stock": 95,
+      "images": [
+        "/assets/img/th-298986468.jpg",
+        "/assets/img/th-298986468.jpg"
+      ],
+      "brand": "FlexFit",
+      "rating": 4.5
+    },
+    {
+      "id": 10,
+      "name": "Digital Air Fryer",
+      "description": "Compact air fryer with digital controls and adjustable temperature settings.",
+      "price": 89.99,
+      "category": "Home & Kitchen",
+      "stock": 75,
+      "images": [
+        "/assets/img/th-298986468.jpg",
+        "/assets/img/th-298986468.jpg"
+      ],
+      "brand": "CrispyCook",
+      "rating": 4.4
+    }
+  ]
+  

@@ -18,6 +18,7 @@ func main() {
 	ginEngine.Static("/static", "./static")
 	ginEngine.Static("/assets", "./assets")
 
+	//routers
 	product.ProductRouter(ginEngine)
 
 	ginEngine.Run(":8080")

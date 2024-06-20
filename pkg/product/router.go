@@ -8,4 +8,5 @@ func ProductRouter(r *gin.Engine) {
 	handler := NewHandler(service)
 
 	r.GET("/products", handler.GetAll)
+	r.GET("/products/:id", handler.GetByID)
 }

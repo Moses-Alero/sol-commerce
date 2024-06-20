@@ -1,41 +1,47 @@
 package components
 
-import "sol-commerce/db"
 import "time"
 import "strconv"
 
 
-templ Base(products []db.Product){
-  <!DOCTYPE html>
+templ PageBuilder(components ...templ.Component){
+    <!DOCTYPE html>
     <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Solana Commerce</title>
-        <link rel="stylesheet" href="/static/styles.css">
-        <link rel="icon" href="https://www.liblogo.com/img-logo/so2809s56c-solana-logo-solana-crypto-logo-png-file-png-all.png">
-        <script src="/static/htmx.js" type="text/javascript"></script>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <div class="logo">
-                    <img src="https://www.liblogo.com/img-logo/so2809s56c-solana-logo-solana-crypto-logo-png-file-png-all.png">
-                    <h1>Solana Store</h1>
-                </div>
-                <div>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Category</a></li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-         @Products(products)
-    </body>
-    <footer>
-        <p>&copy; {strconv.Itoa(time.Now().Year())} Solana Store. All rights reserved.</p>
-    </footer>
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Solana Commerce</title>
+            <link rel="stylesheet" href="/static/styles.css">
+            <link rel="icon" href="https://www.liblogo.com/img-logo/so2809s56c-solana-logo-solana-crypto-logo-png-file-png-all.png">
+            <script src="/static/htmx.js" type="text/javascript"></script>
+        </head>
+        <body>
+            <div id="root">
+                for _, comp := range components{
+                    @comp
+                }
+                <footer>
+                    <p>&copy; {strconv.Itoa(time.Now().Year())} Solana Store. All rights reserved.</p>
+                 </footer>
+            </div>
+        </body>
     </html>
+}
+
+templ Nav(){
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://www.liblogo.com/img-logo/so2809s56c-solana-logo-solana-crypto-logo-png-file-png-all.png">
+                <h1>Solana Store</h1>
+            </div>
+            <div>
+                <ul>
+                    <li><a href="#" hx-get="/home">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="#">Category</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 }

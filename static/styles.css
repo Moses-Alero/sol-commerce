@@ -120,7 +120,13 @@ nav img{
 
 .product-info .info p{
   color: #67727D;
-  margin-bottom: 5px
+  font-family: "Barlow", sans-serif;
+  margin-bottom: 5px;
+  font-weight: 500;;
+}
+
+.product-info .info p{
+  font-weight: 700;
 }
 
 .product-img-container{
@@ -137,6 +143,53 @@ nav img{
   width: 400px;
   max-height: fit-content;
 }
+
+.product-container h1{
+  font-weight: 400;
+  font-size: 30px;
+  font-family: "Teko";
+}
+
+.product-container{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin: 70px 150px;
+}
+
+
+.product-container p{
+  margin: 10px auto; 
+  color: #67727D;
+  font-family: "Barlow", san-serif;
+  font-weight: 200px; 
+  line-height: 2.2;
+  letter-spacing: 1px
+}
+
+.product-category{
+  margin-top: 20px;
+}
+
+.product-category span{
+  color: #DB4B6F;
+  font-family: "Barlow", san-serif;
+}
+
+.product-img{
+  width: 160vh;
+  margin-right: 60px 
+}
+
+.product-img img{
+  max-width: 100%
+}
+
+.product-purchase{
+  margin-left: 20px;
+  margin-top: 20px
+}
+
 
 
 .product img {

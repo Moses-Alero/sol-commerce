@@ -1,15 +1,17 @@
 package product
 
 import (
+	"fmt"
 	"net/http"
 	"sol-commerce/db"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
 
 type Repository interface {
 	GetAll(ctx *gin.Context) ([]db.Product, error)
-	GetByID(id int) (*db.Product, error)
+	GetByID(ctx *gin.Context, ID int) (*db.Product, error)
 }
 
 type repo struct{}
@@ -19,13 +21,19 @@ func NewRepository() Repository {
 }
 
 func (p *repo) GetAll(ctx *gin.Context) ([]db.Product, error) {
-	data, err := db.Request[[]db.Product](http.MethodGet, "products", nil)
+	products, err := db.Request[[]db.Product](http.MethodGet, "products", nil)
 	if err != nil {
 		return []db.Product{}, nil
 	}
-	return *data, nil
+	return *products, nil
 }
 
-func (p *repo) GetByID(id int) (*db.Product, error) {
-	return nil, nil
+func (p *repo) GetByID(ctx *gin.Context, ID int) (*db.Product, error) {
+	path := "products/" + strconv.Itoa(ID)
+	product, err := db.Request[db.Product](http.MethodGet, path, nil)
+	if err != nil {
+		fmt.Println(err.Error())
+		return nil, err
+	}
+	return product, nil
 }

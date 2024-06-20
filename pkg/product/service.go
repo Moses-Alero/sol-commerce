@@ -8,7 +8,7 @@ import (
 
 type ProductService interface {
 	GetAll(ctx *gin.Context) ([]db.Product, error)
-	// GetByID(id int) (db.Product, error)
+	GetByID(ctx *gin.Context, ID int) (db.Product, error)
 }
 
 type productService struct {
@@ -22,9 +22,17 @@ func NewService(repo Repository) ProductService {
 }
 
 func (p *productService) GetAll(ctx *gin.Context) ([]db.Product, error) {
-	data, err := p.r.GetAll(ctx)
+	products, err := p.r.GetAll(ctx)
 	if err != nil {
 		return []db.Product{}, err
 	}
-	return data, nil
+	return products, nil
+}
+
+func (p *productService) GetByID(ctx *gin.Context, ID int) (db.Product, error) {
+	product, err := p.r.GetByID(ctx, ID)
+	if err != nil {
+		return db.Product{}, err
+	}
+	return *product, nil
 }

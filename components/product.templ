@@ -3,10 +3,24 @@ package components
 import "sol-commerce/db"
 import "strconv"
 
+
+templ ProductsPage(products []db.Product){
+    @PageBuilder(
+        Nav(), 
+        Products(products),
+    )
+}
+
 templ Products(products []db.Product) {
-     <section class="products">
+    <section class="products" id="products">
             for _, product := range products{
-                <div class="product">
+                <div class="product" 
+                    hx-get={"/products/"+strconv.Itoa(product.ID)}
+                    hx-push-url="true"
+                    hx-trigger="click"
+                    hx-target="#root"
+                    hx-swap="outerHTML"
+                >
                     <div class="product-img-container">
                        <img src={product.Image} alt={product.Title}> 
                     </div>
@@ -18,12 +32,38 @@ templ Products(products []db.Product) {
                             <p>{product.Category}</p>
                             <h4>{product.Title}</h4>
                             <span>⭐️⭐️⭐️⭐️⭐️</span>
-                            <p>${strconv.FormatFloat(product.Price, 'f', -1, 64)}</p>
+                            <p class="price">${strconv.FormatFloat(product.Price, 'f', -1, 64)}</p>
                         </div>
                     </div>
                 </div>
             }
     </section>
 }
+
+templ ProductPage(product db.Product){
+    @PageBuilder(
+        Nav(), 
+        Product(product),
+    )
+}
+
+templ Product(product db.Product){
+    <div class="product-container">
+        <section class="product-img">
+           <img src={product.Image} alt={product.Title}> 
+        </section>
+        <div class="product-purchase">
+            <section>
+                <h1>{product.Title}</h1>
+                <span>{strconv.FormatFloat(product.Price, 'f', -1, 64)}</span>
+                <p>{product.Description}</p>
+            </section>
+            <section class="product-category">
+                <p>Category: <span>{product.Category}</span></p>
+            </section>  
+        </div> 
+    </div>
+}
+
 
 // https://websitedemos.net/custom-printing-04/shop/?customize=template

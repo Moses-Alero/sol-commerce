@@ -12,8 +12,10 @@ templ PageBuilder(components ...templ.Component){
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Solana Commerce</title>
             <link rel="stylesheet" href="/static/styles.css">
+            <link rel="stylesheet" href="/static/index.css">
             <link rel="icon" href="https://www.liblogo.com/img-logo/so2809s56c-solana-logo-solana-crypto-logo-png-file-png-all.png">
-            <script src="/static/htmx.js" type="text/javascript"></script>
+            <script src="/static/htmx.js" type="text/javascript"></script> 
+            <script src="/static/index.js"></script>     
         </head>
         <body>
             <div id="root">
@@ -22,7 +24,7 @@ templ PageBuilder(components ...templ.Component){
                 }
                 <footer>
                     <p>&copy; {strconv.Itoa(time.Now().Year())} Solana Store. All rights reserved.</p>
-                 </footer>
+                </footer>
             </div>
         </body>
     </html>

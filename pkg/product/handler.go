@@ -12,6 +12,7 @@ import (
 type ProductHandler interface {
 	GetAll(ctx *gin.Context)
 	GetByID(ctx *gin.Context)
+	GetByCategory(ctx *gin.Context)
 }
 
 type productHandler struct {
@@ -42,4 +43,15 @@ func (handler *productHandler) GetByID(ctx *gin.Context) {
 		return
 	}
 	ctx.HTML(http.StatusOK, "", components.ProductPage(product))
+}
+
+func (handler *productHandler) GetByCategory(ctx *gin.Context) {
+	Category := ctx.Param("category")
+	products, err := handler.service.GetByCategory(ctx, Category)
+	if err != nil {
+		ctx.HTML(http.StatusInternalServerError, " ", components.ProductsPage(products.Products))
+		fmt.Println(err)
+		return
+	}
+	ctx.HTML(http.StatusOK, "", components.Products(products.Products))
 }

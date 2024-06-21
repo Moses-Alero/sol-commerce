@@ -3,6 +3,9 @@ package components
 import "sol-commerce/db"
 import "strconv"
 
+script renderProductPurchase(Price, Description, Title string){
+    bundle.renderProductPurchase(Price, Description, Title)
+} 
 
 templ ProductsPage(products []db.Product){
     @PageBuilder(
@@ -14,28 +17,24 @@ templ ProductsPage(products []db.Product){
 templ Products(products []db.Product) {
     <section class="products" id="products">
             for _, product := range products{
-                <div class="product" 
-                    hx-get={"/products/"+strconv.Itoa(product.ID)}
-                    hx-push-url="true"
-                    hx-trigger="click"
-                    hx-target="#root"
-                    hx-swap="outerHTML"
-                >
-                    <div class="product-img-container">
-                       <img src={product.Images[0]} alt={product.Title}> 
-                    </div>
-                    <div class="product-info">
-                        <div class="quick-view">
-                            <p>Quick View</p>
+                <a href={templ.SafeURL("/products/"+strconv.Itoa(product.ID))}>
+                    <div class="product">
+                        <div class="product-img-container">
+                        <img src={product.Images[0]} alt={product.Title}> 
                         </div>
-                        <div class="info">
-                            <p>{product.Category}</p>
-                            <h4>{product.Title}</h4>
-                            <span>⭐️⭐️⭐️⭐️⭐️</span>
-                            <p class="price">${strconv.FormatFloat(product.Price, 'f', -1, 64)}</p>
+                        <div class="product-info">
+                            <div class="quick-view">
+                                <p>Quick View</p>
+                            </div>
+                            <div class="info">
+                                <p>{product.Category}</p>
+                                <h4>{product.Title}</h4>
+                                <span>⭐️⭐️⭐️⭐️⭐️</span>
+                                <p class="price">${strconv.FormatFloat(product.Price, 'f', -1, 64)}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             }
     </section>
 }
@@ -53,16 +52,30 @@ templ Product(product db.Product){
            <img src={product.Images[0]} alt={product.Title}> 
         </section>
         <div class="product-purchase">
-            <section class="product-desc">
-                <h1>{product.Title}</h1>
-                <span class="product-price">${strconv.FormatFloat(product.Price, 'f', -1, 64)}</span>
-                <p>{product.Description}</p>
-                <button>Buy</button>
-            </section>
+            <div id="product-purchase">
+                @renderProductPurchase(FloatToString(product.Price), product.Description, product.Title)
+            </div>
             <section class="product-category">
                 <p>Category: <span>{product.Category}</span></p>
             </section>  
         </div> 
+    </div>
+    <div class="related-products">
+      @RelatedProducts(product.Category) 
+    </div>
+    
+}
+
+templ RelatedProducts(category string){
+    <h1
+        hx-get={"/products/category/"+ category}
+        hx-boost="true"
+        hx-trigger="load"
+        hx-target="#related-products"
+        hx-swap="outerHTML" 
+    >Related Products</h1>
+    <div id="related-products">
+        
     </div>
 }
 

@@ -9,6 +9,7 @@ import (
 type ProductService interface {
 	GetAll(ctx *gin.Context) (db.Products, error)
 	GetByID(ctx *gin.Context, ID int) (db.Product, error)
+	GetByCategory(ctx *gin.Context, Category string) (db.Products, error)
 }
 
 type productService struct {
@@ -35,4 +36,12 @@ func (p *productService) GetByID(ctx *gin.Context, ID int) (db.Product, error) {
 		return db.Product{}, err
 	}
 	return *product, nil
+}
+
+func (p *productService) GetByCategory(ctx *gin.Context, Category string) (db.Products, error) {
+	products, err := p.r.GetByCategory(ctx, Category)
+	if err != nil {
+		return db.Products{}, err
+	}
+	return products, nil
 }

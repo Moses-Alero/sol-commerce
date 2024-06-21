@@ -9,4 +9,5 @@ func ProductRouter(r *gin.Engine) {
 
 	r.GET("/products", handler.GetAll)
 	r.GET("/products/:id", handler.GetByID)
+	r.GET("products/category/:category", handler.GetByCategory)
 }

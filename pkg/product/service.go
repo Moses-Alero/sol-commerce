@@ -7,7 +7,7 @@ import (
 )
 
 type ProductService interface {
-	GetAll(ctx *gin.Context) ([]db.Product, error)
+	GetAll(ctx *gin.Context) (db.Products, error)
 	GetByID(ctx *gin.Context, ID int) (db.Product, error)
 }
 
@@ -21,10 +21,10 @@ func NewService(repo Repository) ProductService {
 	}
 }
 
-func (p *productService) GetAll(ctx *gin.Context) ([]db.Product, error) {
+func (p *productService) GetAll(ctx *gin.Context) (db.Products, error) {
 	products, err := p.r.GetAll(ctx)
 	if err != nil {
-		return []db.Product{}, err
+		return db.Products{}, err
 	}
 	return products, nil
 }

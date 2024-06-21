@@ -22,7 +22,7 @@ templ Products(products []db.Product) {
                     hx-swap="outerHTML"
                 >
                     <div class="product-img-container">
-                       <img src={product.Image} alt={product.Title}> 
+                       <img src={product.Images[0]} alt={product.Title}> 
                     </div>
                     <div class="product-info">
                         <div class="quick-view">
@@ -50,13 +50,14 @@ templ ProductPage(product db.Product){
 templ Product(product db.Product){
     <div class="product-container">
         <section class="product-img">
-           <img src={product.Image} alt={product.Title}> 
+           <img src={product.Images[0]} alt={product.Title}> 
         </section>
         <div class="product-purchase">
-            <section>
+            <section class="product-desc">
                 <h1>{product.Title}</h1>
-                <span>{strconv.FormatFloat(product.Price, 'f', -1, 64)}</span>
+                <span class="product-price">${strconv.FormatFloat(product.Price, 'f', -1, 64)}</span>
                 <p>{product.Description}</p>
+                <button>Buy</button>
             </section>
             <section class="product-category">
                 <p>Category: <span>{product.Category}</span></p>

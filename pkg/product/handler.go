@@ -27,11 +27,11 @@ func NewHandler(service ProductService) ProductHandler {
 func (handler *productHandler) GetAll(ctx *gin.Context) {
 	products, err := handler.service.GetAll(ctx)
 	if err != nil {
-		ctx.HTML(http.StatusInternalServerError, " ", components.ProductsPage(products)) //todo: fix this to use proper error message
+		ctx.HTML(http.StatusInternalServerError, " ", components.ProductsPage(products.Products)) //todo: fix this to use proper error message
 		fmt.Println(err)
 		return
 	}
-	ctx.HTML(http.StatusOK, "", components.ProductsPage(products))
+	ctx.HTML(http.StatusOK, "", components.ProductsPage(products.Products))
 }
 
 func (handler *productHandler) GetByID(ctx *gin.Context) {

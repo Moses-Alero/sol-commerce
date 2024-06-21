@@ -10,7 +10,7 @@ import (
 )
 
 type Repository interface {
-	GetAll(ctx *gin.Context) ([]db.Product, error)
+	GetAll(ctx *gin.Context) (db.Products, error)
 	GetByID(ctx *gin.Context, ID int) (*db.Product, error)
 }
 
@@ -20,10 +20,10 @@ func NewRepository() Repository {
 	return &repo{}
 }
 
-func (p *repo) GetAll(ctx *gin.Context) ([]db.Product, error) {
-	products, err := db.Request[[]db.Product](http.MethodGet, "products", nil)
+func (p *repo) GetAll(ctx *gin.Context) (db.Products, error) {
+	products, err := db.Request[db.Products](http.MethodGet, "products", nil)
 	if err != nil {
-		return []db.Product{}, nil
+		return db.Products{}, nil
 	}
 	return *products, nil
 }

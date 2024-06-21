@@ -11,7 +11,7 @@ import (
 // using fake STORE API as dummy database for now at least
 func Request[T any](method, path string, data interface{}) (*T, error) {
 	var client = &http.Client{}
-	BaseURL := "https://fakestoreapi.com/"
+	BaseURL := "https://dummyjson.com/"
 	url := BaseURL + path
 	jsonData, err := json.Marshal(data)
 	if err != nil {

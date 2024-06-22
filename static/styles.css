@@ -184,11 +184,12 @@ nav img{
   font-size: 25px;
   color: #676767;
 }
-.product-purchase button{
+.product-purchase .product-purchase-btn{
   color: #DB4B6F;
   margin-top: 30px;
+  margin-left: 10px;
   width: 90px;
-  height: 30px;
+  height: 40px;
   font-size: large;
 }
 

@@ -1,4 +1,5 @@
 */node_modules
 index.html
 templ
-*_templ.go*
+*_templ.txt
+*_templ.go

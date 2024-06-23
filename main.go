@@ -1,6 +1,7 @@
 package main
 
 import (
+	"sol-commerce/pkg/home"
 	"sol-commerce/pkg/product"
 	templrender "sol-commerce/x/templRender"
 
@@ -20,6 +21,7 @@ func main() {
 
 	//routers
 	product.ProductRouter(ginEngine)
+	home.GetHome(ginEngine)
 
 	ginEngine.Run(":8080")
 }

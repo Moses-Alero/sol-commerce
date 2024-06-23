@@ -15,7 +15,7 @@ export const Product = (props:{Price: string, Description: string, Title: string
                 <p>{props.Description}</p>
                 <Transfer Price={props.Price}/>
             </section>
-            <WalletMultiButton/>
+            
         </>
     ) 
 }

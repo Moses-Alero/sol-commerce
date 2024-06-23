@@ -1,9 +1,10 @@
 window.Buffer = window.Buffer || require("buffer").Buffer;
 import { useWallet, useConnection} from "@solana/wallet-adapter-react";
+import { WalletMultiButton, useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { LAMPORTS_PER_SOL, SystemProgram, PublicKey, Transaction } from "@solana/web3.js";
 import { useCallback, useEffect } from "react";
 
-export const Transfer = (props:{Price: string}) => {
+export const Transfer = (props:{Price: string}): any => {
     const { publicKey, sendTransaction, wallet, connect, connected, connecting, autoConnect } = useWallet();
   
 
@@ -28,8 +29,7 @@ export const Transfer = (props:{Price: string}) => {
     const amount_to_transfer = number.toFixed(3)
 
     console.log(amount_to_transfer)
-    const { connection,} = useConnection();
-
+    const { connection } = useConnection();
     const sendSol = (event) => {
 
     event.preventDefault();
@@ -51,7 +51,8 @@ export const Transfer = (props:{Price: string}) => {
 };
     return(
         <>
-            <button onClick={sendSol}>Buy Now</button>
+          <WalletMultiButton/>
+          <button className="product-purchase-btn" onClick={sendSol}>BUY NOW</button>
         </>
     )
 }
